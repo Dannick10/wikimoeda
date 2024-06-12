@@ -19,30 +19,36 @@ const currency = (num:number, cur:string):string => {
         <div className='flex gap-3 items-center'>
             <img src={moeda} alt="imagem de moeda" className='h-20 w-20'/>
             <h3>MOEDA AO VIVO</h3>
+        
         </div>
-
-        <div>
-            <div className='flex items-center justify-between px-12 bg-[#1E1E1E] p-2 rounded-t-md'>
-                <p>Moeda</p>
-                <p>Preço</p>
-                <p>Mudança</p>
-            </div>
-
+                <div className='relative overflow-x-auto'>
+                <table className='w-full overflow-x-autow-full text-sm text-left rtl:text-right'>
+                <thead className='bg-[#1E1E1E]'>
+                <tr>
+                <th scope='col' className='px-6 py-3'>Moeda</th>
+                <th scope='col' className='px-6 py-3'>Preço</th>
+                        <th scope='col' className='px-6 py-3'>Alta</th>
+                        <th scope='col' className='px-6 py-3'>Baixa</th>
+                        <th scope='col' className='px-6 py-3'>Mudança</th>
+                    </tr>
+                </thead>
+            <tbody>
             {data && Object.values(data).map((d: Icoins) => (<>
-            <div key={d.id} className='p-2 roundend-s-md  bg-gray-200 text-[#1E1E1E]  even:bg-gray-100'>
-                <div className='flex items-center justify-between px-12'>
-                    <p className='max-w-1'>{d.code} {d.name.split(' ')[0].replace('/Real','')}</p>
-                    <p>{currency(d.bid,d.code)}</p>
-                    <p style={ 
+                <tr className='border-b bg-slate-200 odd:bg-slate-300 text-[#1E1E1E]'>
+                    <td className='px-6 py-4'>{d.code} {d.name.replace('/Real Brasileiro','')}</td>
+                    <td className='px-6 py-4'>{currency(d.bid,d.code)}</td>
+                    <td className='px-6 py-4'>{currency(d.high,d.code)}</td>
+                    <td className='px-6 py-4'>{currency(d.low,d.code)}</td>
+                    <td className='px-6 py-4' style={ 
                         d.pctChange < 0 ? { color: 'red' } : 
                         d.pctChange > 0 ? 
                         { color: 'green' } : 
-                        { color: '#1E1E1E' } }>{d.pctChange}%</p>
-                </div>
-            </div>
+                        { color: '#1E1E1E' } }>{d.pctChange}%</td>
+                </tr>
             </>))}
+                 </tbody>
+         </table>
         </div>
-
     </section>
   )
 }

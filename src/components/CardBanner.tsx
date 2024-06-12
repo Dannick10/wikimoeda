@@ -1,5 +1,5 @@
 import React from 'react'
-import {idata} from '../interfaces/interface'
+import {idata} from '../interfaces/IcoinInterface'
 
 
 const CardBanner = ({data}: idata) => {
