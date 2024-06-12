@@ -1,0 +1,3 @@
+interface idata{
+    info: string
+}
