@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import logo from '/logo.png'
 
 const Header = () => {
@@ -11,9 +12,10 @@ const Header = () => {
 
         <nav>
             <ul className='grid grid-flow-col gap-x-2'>
-                <li className='cursor-pointer border-r px-2 flex hover:text-[#BFB630] w-30'><p>Cotação</p></li>
-                <li  className='cursor-pointer border-r px-2  hover:text-[#BFB630] w-30'>WIKI</li>
-                <li  className='cursor-pointer px-2  hover:text-[#BFB630] w-30 text-center'>Noticias</li>
+                <Link to={'/'} className='cursor-pointer border-r px-2 flex hover:text-[#BFB630] w-30'><p>Inicio</p></Link>
+                <Link  to={'/'} className='cursor-pointer border-r px-2 flex hover:text-[#BFB630] w-30'><p>Cotação</p></Link>
+                <Link   to={'/'}className='cursor-pointer border-r px-2  hover:text-[#BFB630] w-30'>WIKI</Link>
+                <Link  to={'/'} className='cursor-pointer px-2  hover:text-[#BFB630] w-30 text-center'>Noticias</Link>
             </ul>
         </nav>
     </header>
