@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react'
 import main from '/main.png'
 
 import { useFetch } from '../components/Hooks/useFetch'
+import { useNoticiasFetch } from '../components/Hooks/useNoticiasFetch'
 
 import CardBanner from '../components/CardBanner'
 import CoinSection from '../components/CoinSection'
@@ -16,13 +17,14 @@ const Home = () => {
         info: 'Dólar em disparada: entenda a alta da moeda e o que vem pela frente'
     })
     
-    const [coins,setCoins] = useState<Icoin>()
     const [query,Setquery]  = useState<string>('USD-BRL,EUR-BRL,BTC-BRL,ETH-BRL,CAD-BRL,GBP-BRL,ARS-BRL,LTC-BRL,JPY-BRL,CHF-BRL,AUD-BRL,CNY-BRL,ILS-BRL,XRP-BRL')
     const [url,setUrl] = useState<string>(`https://economia.awesomeapi.com.br/json/last/${query}`)
     
     const {data:coinFetch, loading } = useFetch(url)
-    
 
+    const {data:noticiasFetch, loading:loadingNoticias} = useNoticiasFetch('https://servicodados.ibge.gov.br/api/v3/noticias/?busca=moeda?page=1?qtd=1')
+
+    console.log(noticiasFetch)
 
   return (
     <main className='flex flex-col gap-[5em] my-8'>
@@ -37,7 +39,9 @@ const Home = () => {
         </div>
     </section>
 
-    <CardBanner data={data} info={data.info}/>
+    {noticiasFetch && <>
+    <CardBanner data={noticiasFetch.items}/>
+    </>}
 
     {loading ? (<div role="status">
     <svg aria-hidden="true" className="block w-20 h-20 m-auto text-gray-200 animate-spin dark:text-gray-600 fill-lime-500" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

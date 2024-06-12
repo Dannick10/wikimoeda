@@ -1,4 +1,5 @@
  export interface Icoin{
+    id: number
     ask: number 
     bid: number
     code: string 

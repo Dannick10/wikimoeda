@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Icoin } from '../../interfaces/IcoinInterface'
+import { Inoticias } from '../../interfaces/Inoticiasinterface'
 
-export const useFetch = (url: string) => {
+export const useNoticiasFetch = (url: string) => {
 
-    const [data,setData] = useState<Icoin>()
+    const [data,setData] = useState<Inoticias>()
     const [loading,setLoading] = useState<boolean>(false)
 
     useEffect(() => {
