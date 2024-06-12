@@ -2,13 +2,12 @@ import React, {useEffect, useState} from 'react'
 
 import main from '/main.png'
 
-import { useFetch } from '../components/Hooks/useFetch'
-import { useNoticiasFetch } from '../components/Hooks/useNoticiasFetch'
+import { useFetch } from '../../components/Hooks/useFetch'
+import { useNoticiasFetch } from '../../components/Hooks/useNoticiasFetch'
 
-import CardBanner from '../components/CardBanner'
-import CoinSection from '../components/CoinSection'
+import CardBanner from '../../components/CardBanner'
+import CoinSection from '../../components/CoinSection'
 
-import {Icoin} from '../interfaces/IcoinInterface' 
 
 const Home = () => {
 
@@ -29,7 +28,7 @@ const Home = () => {
   return (
     <main className='flex flex-col gap-[5em] my-8'>
     <section className='flex items-center justify-around px-20 mt-5'>
-        <div className='flex flex-col items-center gap-5'>
+        <div className='flex flex-col items-center gap-20'>
             <h3 className='text-2xl font-Rubik'>Wikimoeda</h3>
             <p className='w-4/6 text-xl'>Fique atualizado com as últimas cotações, notícias e informações detalhadas sobre diversas moedas, incluindo Real, Dólar e Bitcoin.</p>
         </div>
@@ -39,9 +38,12 @@ const Home = () => {
         </div>
     </section>
 
+    <section className='my-6 text-center flex flex-col gap-4'>
+        <h2>ultimas <span className='text-lime-400'>noticias</span> no mundo da <b>economia</b></h2>  
     {noticiasFetch && <>
     <CardBanner data={noticiasFetch.items}/>
     </>}
+    </section>
 
     {loading ? (<div role="status">
     <svg aria-hidden="true" className="block w-20 h-20 m-auto text-gray-200 animate-spin dark:text-gray-600 fill-lime-500" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

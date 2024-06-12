@@ -1,8 +1,8 @@
 import React from 'react'
 import Header from './components/Header/Header'
-import Noticias from './components/Noticias/Noticias'
+import Noticias from './Pages/Noticias/Noticias'
 
-import Home from './Pages/Home'
+import Home from './Pages/Home/Home'
 
 import { BrowserRouter,Routes, Route } from 'react-router-dom'
 

@@ -8,7 +8,6 @@ interface props {
 
 const CoinSection = ({data}:props) => {
 
-
 const currency = (num:number, cur:string):string => {
     let convert = new Intl.NumberFormat('pt-br', {
         style: 'currency',
