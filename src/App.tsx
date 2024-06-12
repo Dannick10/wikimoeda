@@ -9,9 +9,11 @@ const App = () => {
     <div className='font-poppins'>
       <BrowserRouter>
       <Header/>
+      <div className='py-24'>
       <Routes>
         <Route path='/' Component={Home}/>
       </Routes>
+      </div>
       </BrowserRouter>
     </div>
   )

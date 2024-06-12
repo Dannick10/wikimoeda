@@ -1,4 +1,4 @@
-interface Icoin{
+ export interface Icoin{
     ask: number 
     bid: number
     code: string 

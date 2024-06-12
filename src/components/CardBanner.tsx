@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {idata} from '../interfaces/IcoinInterface'
 
 
@@ -9,9 +10,9 @@ const CardBanner = ({data}: idata) => {
         <div className='bg-[#597C24] w-full h-[5.2em] flex items-center justify-center rounded-l-md p-8'>
             <p>{data.info} a</p>
         </div>
-        <div className='bg-white w-[15em] h-[5.2em] text-[#6C8C3B] font-bold flex items-center justify-center rounded-r-md'>
-            <button>SAIBA MAIS</button>
-        </div>
+        <Link to={'/'} className='bg-white w-[15em] h-[5.2em] text-[#6C8C3B] font-bold flex items-center justify-center rounded-r-md hover:text-lime-800 transition-all ease-linear duration-300'>
+            <p>SAIBA MAIS</p>
+        </Link>
 
     </aside>
   )
