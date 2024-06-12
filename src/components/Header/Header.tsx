@@ -15,7 +15,7 @@ const Header = () => {
                 <Link to={'/'} className='cursor-pointer px-2 flex hover:text-lime-400 w-30'><p>Inicio</p></Link>
                 <Link  to={'/'} className='cursor-pointer px-2 flex hover:text-lime-400 w-30'><p>Cotação</p></Link>
                 <Link   to={'/'}className='cursor-pointer px-2  hover:text-lime-400 w-30'>WIKI</Link>
-                <Link  to={'/'} className='cursor-pointer px-2  hover:text-lime-400 w-30 text-center'>Noticias</Link>
+                <Link  to={'/noticias'} className='cursor-pointer px-2  hover:text-lime-400 w-30 text-center'>Noticias</Link>
             </ul>
         </nav>
     </header>

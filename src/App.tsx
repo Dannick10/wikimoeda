@@ -1,5 +1,7 @@
 import React from 'react'
 import Header from './components/Header/Header'
+import Noticias from './components/Noticias/Noticias'
+
 import Home from './Pages/Home'
 
 import { BrowserRouter,Routes, Route } from 'react-router-dom'
@@ -12,6 +14,7 @@ const App = () => {
       <div className='py-24'>
       <Routes>
         <Route path='/' Component={Home}/>
+        <Route path='/noticias' Component={Noticias}/>
       </Routes>
       </div>
       </BrowserRouter>
