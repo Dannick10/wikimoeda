@@ -1,3 +1,3 @@
-interface idata{
-    info: string
+interface idata {
+  info: string;
 }
