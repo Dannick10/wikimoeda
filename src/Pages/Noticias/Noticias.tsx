@@ -1,27 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Inoticias } from '../../interfaces/Inoticiasinterface'
 import { useNoticiasFetch } from '../../components/Hooks/useNoticiasFetch'
 
 const Noticias = () => {
 
-  const {data:noticiasFetch, loading:loadingNoticias} = useNoticiasFetch('https://servicodados.ibge.gov.br/api/v3/noticias/?busca=moeda?page=1?qtd=1')
-  console.log(noticiasFetch)
-
+  const {data:noticiasFetch, loading:loadingNoticias} = useNoticiasFetch('https://servicodados.ibge.gov.br/api/v3/noticias/?busca=economia?page=1?qtd=1')
+    
+  
   return (
     <div className='p-4'>
 
         <header className='p-6'>
 
-          <div className='flex items-center gap-2'>
-            <h1 className='text-xl'>Notícias em tempo real sobre a economia</h1>
-            <i className="fa-solid fa-newspaper"></i>
+          <div className='flex items-center gap-2 justify-between'>
+              <h1 className='text-xl'>Notícias em tempo real sobre a economia</h1>
+              <i className="fa-solid fa-newspaper"></i>
           </div>
 
           <hr />
         </header>
 
     <section className='flex flex-wrap justify-evenly gap-10'>
-    
+   
     {noticiasFetch && Object.values(noticiasFetch.items).map((noticias) => (<>         
     <div id={noticias.id} className="max-w-sm border border-gray-200 rounded-lg shadow-inner" key={noticias.id}>
     <div className="p-5 flex flex-col justify-between h-full">

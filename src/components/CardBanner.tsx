@@ -10,7 +10,7 @@ const CardBanner = ({data}: props) => {
   
   return (
     <aside className='rounded-md flex items-center justify-between w-[80%] m-auto text-[1.1em]'>
-        <div className='bg-[#597C24] w-full h-[5.2em] flex items-center justify-center rounded-l-md p-8'>
+        <div className='bg-lime-700 w-full h-[5.2em] flex items-center justify-center rounded-l-md p-8'>
           {data && <>
               {data[0].titulo}
           </>}

@@ -21,7 +21,7 @@ const Home = () => {
     
     const {data:coinFetch, loading } = useFetch(url)
 
-    const {data:noticiasFetch, loading:loadingNoticias} = useNoticiasFetch('https://servicodados.ibge.gov.br/api/v3/noticias/?busca=moeda?page=1?qtd=1')
+    const {data:noticiasFetch, loading:loadingNoticias} = useNoticiasFetch('https://servicodados.ibge.gov.br/api/v3/noticias/?busca=economia?page=1?qtd=1')
 
     console.log(noticiasFetch)
 

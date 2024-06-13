@@ -7,7 +7,7 @@ const Header = () => {
     <header className='flex items-center justify-between p-4 px-20 fixed z-10 w-full bg-[#0D0D0D] top-0 border-b-2 border-b-lime-400'>
         <div className='flex items-center gap-2'>
             <img src={logo} alt="" className='w-8' />
-            <h2 className='text-2xl font-medium tracking-wider font-Rubik'>WIKI<span className='text-[#BFB630]'>MOEDA</span></h2>
+            <h2 className='text-2xl font-medium tracking-wider font-Rubik'>WIKI<span className='text-lime-400'>MOEDA</span></h2>
         </div>
 
         <nav>
