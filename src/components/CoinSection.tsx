@@ -17,7 +17,7 @@ const CoinSection = ({ data }: props) => {
   };
 
   return (
-    <section className="flex flex-col gap-4 px-[8em]">
+    <section className="flex flex-col gap-4 px-2 lg:px-[8em]">
       <div className="flex gap-3 items-center">
         <img src={moeda} alt="imagem de moeda" className="h-20 w-20" />
         <h3>MOEDA AO VIVO</h3>

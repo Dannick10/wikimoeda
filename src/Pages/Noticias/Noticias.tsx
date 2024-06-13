@@ -50,7 +50,7 @@ const Noticias = () => {
 
                   <div>
                     <p className="right-full">
-                      {noticias.data_publicacao.split(" ")[0]}
+                      {noticias.data_publicacao.split("T")[0]}
                     </p>
                     <a
                       href={noticias.link}
