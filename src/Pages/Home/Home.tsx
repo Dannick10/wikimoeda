@@ -16,10 +16,6 @@ const Home = () => {
     Aos.init();
   });
 
-  const [data, setdata] = useState<idata>({
-    info: "Dólar em disparada: entenda a alta da moeda e o que vem pela frente",
-  });
-
   const [query, Setquery] = useState<string>(
     "USD-BRL,EUR-BRL,BTC-BRL,ETH-BRL,CAD-BRL,GBP-BRL,ARS-BRL,LTC-BRL,JPY-BRL,CHF-BRL,AUD-BRL,CNY-BRL,ILS-BRL,XRP-BRL"
   );
@@ -32,8 +28,6 @@ const Home = () => {
   const { data: noticiasFetch, loading: loadingNoticias } = useNoticiasFetch(
     "https://servicodados.ibge.gov.br/api/v3/noticias/?busca=economia?page=1?qtd=1"
   );
-
-  console.log(noticiasFetch);
 
   return (
     <main className="flex flex-col gap-[5em] my-8">
@@ -67,7 +61,7 @@ const Home = () => {
         </h2>
         {noticiasFetch && (
           <>
-            <CardBanner data={noticiasFetch.items} />
+            <CardBanner data={noticiasFetch} />
           </>
         )}
       </section>
