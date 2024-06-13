@@ -8,16 +8,18 @@ interface props {
 
 const CardBanner = ({ data }: props) => {
   return (
-    <aside className="rounded-md flex items-center justify-between w-[80%] m-auto text-[1.1em]">
-      <div className="bg-lime-700 w-full h-[5.2em] flex items-center justify-center rounded-l-md p-8">
+    <aside className="flex items-center justify-center m-auto text-[1.1em] flex-col w-[80%] lg:flex-row h-30  ">
+      <div className="bg-gradient-to-r from-lime-800  to-lime-700 flex items-center justify-center h-ful p-4  w-full lg:w-auto lg:p-6 border lg:border-b-gray-800">
         {data && <>{data[0].titulo}</>}
       </div>
-      <Link
-        to={"/noticias"}
-        className="bg-white w-[15em] h-[5.2em] text-[#6C8C3B] font-bold flex items-center justify-center rounded-r-md hover:text-lime-800 transition-all ease-linear duration-300"
-      >
-        <p>SAIBA MAIS</p>
-      </Link>
+      <div className="text-[#6C8C3B] font-bold flex items-center justify-center hover:text-lime-800 transition-all ease-linear duration-300 w-full lg:w-auto border border-b-gray-800">
+          <Link
+            to={"/noticias"}
+            className="bg-white w-full p-4 lg:p-6"
+            >
+          SAIBA MAIS
+          </Link>
+      </div>
     </aside>
   );
 };
