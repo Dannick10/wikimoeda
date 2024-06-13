@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react'
+import Aos from 'aos'
+import 'Aos/dist/aos.css'
 
 import main from '/main.png'
 
@@ -11,7 +13,10 @@ import CoinSection from '../../components/CoinSection'
 
 const Home = () => {
 
-    
+   useEffect(() => {
+    Aos.init()
+   })
+
     const [data,setdata] = useState<idata>({
         info: 'Dólar em disparada: entenda a alta da moeda e o que vem pela frente'
     })
@@ -28,17 +33,17 @@ const Home = () => {
   return (
     <main className='flex flex-col gap-[5em] my-8'>
     <section className='flex items-center justify-around px-20 mt-5'>
-        <div className='flex flex-col items-center gap-20'>
+        <div className='flex flex-col items-center gap-20'  data-aos="fade-right"  data-aos-duration="1000">
             <h3 className='text-2xl font-Rubik'>Wikimoeda</h3>
             <p className='w-4/6 text-xl'>Fique atualizado com as últimas cotações, notícias e informações detalhadas sobre diversas moedas, incluindo Real, Dólar e Bitcoin.</p>
         </div>
-        <div className='relative'>
+        <div className='relative'  data-aos="fade-left"  data-aos-duration="1000">
             <img src={main} alt="" className='w-[40em]' />
             <div className='bg-[#6C8C3B] absolute w-[30em] h-[30em] top-0 right-0 -z-10 rounded-full blur-3xl opacity-20'></div>
         </div>
     </section>
 
-    <section className='my-6 text-center flex flex-col gap-4'>
+    <section className='my-6 text-center flex flex-col gap-4'  data-aos="fade-up"  data-aos-duration="500">
         <h2>ultimas <span className='text-lime-400'>noticias</span> no mundo da <b>economia</b></h2>  
     {noticiasFetch && <>
     <CardBanner data={noticiasFetch.items}/>

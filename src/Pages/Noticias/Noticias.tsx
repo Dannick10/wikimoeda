@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Inoticias } from '../../interfaces/Inoticiasinterface'
 import { useNoticiasFetch } from '../../components/Hooks/useNoticiasFetch'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const Noticias = () => {
+
+  useEffect(() => {
+    Aos.init()
+  },[])
 
   const {data:noticiasFetch, loading:loadingNoticias} = useNoticiasFetch('https://servicodados.ibge.gov.br/api/v3/noticias/?busca=economia?page=1?qtd=1')
     
@@ -23,7 +29,7 @@ const Noticias = () => {
     <section className='flex flex-wrap justify-evenly gap-10'>
    
     {noticiasFetch && Object.values(noticiasFetch.items).map((noticias) => (<>         
-    <div id={noticias.id} className="max-w-sm border border-gray-200 rounded-lg shadow-inner" key={noticias.id}>
+    <div id={noticias.id} className="max-w-sm border border-gray-200 rounded-lg shadow-inner" key={noticias.id} data-aos="fade-up" data-aos-duration="1000" >
     <div className="p-5 flex flex-col justify-between h-full">
       <div>
        <h5 className="mb-2 text-2xl font-bold tracking-tight text-lime-500">{noticias.titulo}</h5>
