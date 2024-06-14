@@ -12,6 +12,7 @@ import CardBanner from "../../components/CardBanner";
 import CoinSection from "../../components/CoinSection";
 
 const Home = () => {
+  
   useEffect(() => {
     Aos.init();
   });

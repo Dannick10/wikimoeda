@@ -1,0 +1,15 @@
+.wikires table{
+    display: none;
+}
+
+.wikires ul{
+    display: none;
+}
+
+.navbox{
+    display: none;
+}
+
+.wikires ~ .noprint {
+  
+}
