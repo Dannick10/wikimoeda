@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-
+import React, { useState,useEffect } from "react";
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 import { useWikiFetch } from "../../Hooks/useWikiFetch";
 
 const Wiki = () => {
@@ -9,6 +10,10 @@ const Wiki = () => {
   const handleSearch = () => {
 
   };
+
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
   const TypeInvesting:object = {
     "Ações": [
@@ -45,17 +50,17 @@ const Wiki = () => {
     ]
   };
   
-  console.log(Object.entries(TypeInvesting))
   return (
     <>
-      <section className="flex flex-col gap-10">
-        <h2 className="text-xl text-center text-lime-400 font-black tracking-wider">
+      <section className="flex flex-col gap-10 items-center">
+        <h2 className="text-xl text-center text-lime-400 font-black tracking-wider"  data-aos="fade-right" data-aos-duration="800">
           Tipo de Investimentos
         </h2>
 
-        <div className="px-10 flex flex-col gap-10 w-[80%]">
-            {Object.entries(TypeInvesting).map((name) =>(<>
-              <aside className="border-l border-b border-b-lime-400 border-l-lime-400 px-3">
+        <div className="px-10 flex flex-col gap-10 w-[80%] lg:w-[50%]">
+            {Object.entries(TypeInvesting).map((name,i) =>(<>
+              <aside className="border-l border-b border-b-lime-400 border-l-lime-400 px-3" 
+               data-aos='fade-up' key={i}>
                 <h2 className="py-3 text-lg font-bold text-lime-400">{name[0]}</h2>
                 <p>{name[1]}</p>
                 <button className="bg-lime-700 py-1 px-4 rounded-sm m-4 block hover:bg-lime-800">Saiba mais</button>
