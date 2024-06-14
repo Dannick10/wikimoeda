@@ -27,7 +27,7 @@ const Header = () => {
             <p>Cotação</p>
           </NavLink>
           <NavLink
-            to={"/wiki"}
+            to={"/Wiki"}
             className="cursor-pointer px-2  hover:text-lime-400 w-30"
           >
             WIKI

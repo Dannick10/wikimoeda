@@ -49,7 +49,7 @@ const Noticias = () => {
                   </div>
 
                   <div>
-                    <p className="right-full">
+                    <p className="right-full text-slate-300">
                       {noticias.data_publicacao.split("T")[0]}
                     </p>
                     <a

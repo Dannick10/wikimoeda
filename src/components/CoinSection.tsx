@@ -15,7 +15,6 @@ const CoinSection = ({ data }: props) => {
 
     return convert.format(num);
   };
-
   return (
     <section className="flex flex-col gap-4 px-2 lg:px-[8em]">
       <div className="flex gap-3 items-center">
