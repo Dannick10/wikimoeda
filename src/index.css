@@ -30,3 +30,7 @@ body {
   height: .6em;
 }
 
+.group i:hover ~ .group span{
+  display: absolute;
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
