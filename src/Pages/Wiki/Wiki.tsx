@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 import { useWikiFetch } from "../../Hooks/useWikiFetch";
 
 const Wiki = () => {
-  
+
   const navigate = useNavigate()
   
   const handleSearch = (e: React.MouseEvent<HTMLElement>) => {
@@ -31,7 +31,7 @@ const Wiki = () => {
       "Os fundos de investimento são uma forma de investir em uma carteira diversificada de ativos, gerenciada por um gestor profissional.",
       "Existem diversos tipos de fundos, como os de renda fixa, renda variável e multimercado.",
     ],
-    "Previdência Privada": [
+    "Aposentadoria": [
       "A previdência privada é uma forma de poupança de longo prazo que tem como objetivo garantir uma renda complementar no futuro, especialmente na aposentadoria.",
       "Pode ser contratada junto a bancos ou seguradoras.",
     ],
@@ -43,11 +43,11 @@ const Wiki = () => {
       "Investir em commodities significa investir em matérias-primas ou produtos básicos, como ouro, petróleo, grãos, entre outros.",
       "É uma forma de diversificar uma carteira de investimentos.",
     ],
-    "Investimentos Alternativos": [
+    "Investimentos alternativos": [
       "Os investimentos alternativos são aqueles que fogem dos tradicionais, como ações e títulos.",
       "Podem incluir investimentos em imóveis, obras de arte, private equity, entre outros.",
     ],
-    "Investimentos Internacionais": [
+    "Investimento estrangeiro direto": [
       "Investir internacionalmente significa aplicar recursos financeiros em ativos fora do país de origem do investidor.",
       "Isso pode incluir ações de empresas estrangeiras, títulos de dívida de governos estrangeiros, entre outros ativos.",
     ],
