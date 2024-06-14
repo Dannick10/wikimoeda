@@ -1,10 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "/logo.png";
 
 const Header = () => {
+
+  const [open, setOpen] = useState<boolean>(false)
+
+  const handleMenu = () => {
+      setOpen(open?false:true)  
+  }
+
+  console.log(open)
+
   return (
-    <header className="flex items-center justify-between p-4 px-20 fixed z-10 w-full bg-[#0D0D0D] top-0 border-b-2 border-b-lime-400 links">
+    <header className="flex items-center justify-evenly p-4 fixed z-10 w-full bg-[#0D0D0D] top-0 border-b-2 border-b-lime-400 links md:justify-between md:px-10">
       <div className="flex items-center gap-2">
         <img src={logo} alt="" className="w-8" />
         <h2 className="text-2xl font-medium tracking-wider font-Rubik">
@@ -12,7 +21,7 @@ const Header = () => {
         </h2>
       </div>
 
-      <nav>
+      <nav className="hidden md:block">
         <ul className="grid grid-flow-col gap-x-2">
           <NavLink
             to={"/"}
@@ -40,6 +49,47 @@ const Header = () => {
           </NavLink>
         </ul>
       </nav>
+
+      <div className="cursor-pointer right-10 border-lime-400 border-2 w-10 h-10 rounded-md flex flex-col justify-around items-center md:hidden" onClick={handleMenu}>
+        
+    
+          <span className="border-b border-2 w-[80%] border-lime-400"></span>
+          <span className="border-b border-2 w-[80%] border-lime-400"></span>
+          <span className="border-b border-2 w-[80%] border-lime-400"></span>
+     </div>
+
+          {open && 
+          <div id="menu" className="w-screen h-screen bg-neutral-950 absolute left-0 top-[4.6em] select-none" onClick={handleMenu}>
+          <ul className="flex flex-col justify-center items-center">
+          <NavLink
+            to={"/"}
+            className="cursor-pointer px-2 hover:text-lime-400 w-30 border-b-2 border-lime-400  w-full flex justify-center p-10"
+            >
+            Inicio
+          </NavLink>
+          <NavLink
+            to={"/cotacao"}
+            className="cursor-pointer px-2 hover:text-lime-400 border-b-2 border-lime-400 w-full flex justify-center p-10"
+            >
+            Cotação
+          </NavLink>
+          <NavLink
+            to={"/Wiki"}
+            className="cursor-pointer px-2  hover:text-lime-400 border-b-2 border-lime-400 w-full flex justify-center p-10"
+            >
+            WIKI
+          </NavLink>
+          <NavLink
+            to={"/noticias"}
+            className="cursor-pointer px-2  hover:text-lime-400  border-b-2 border-lime-400 w-full flex justify-center p-10"
+            >
+            Noticias
+          </NavLink>
+        </ul>
+          </div>
+          }
+      
+   
     </header>
   );
 };
