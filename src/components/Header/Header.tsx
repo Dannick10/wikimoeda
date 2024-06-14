@@ -14,12 +14,14 @@ const Header = () => {
 
   return (
     <header className="flex items-center justify-evenly p-4 fixed z-10 w-full bg-[#0D0D0D] top-0 border-b-2 border-b-lime-400 links md:justify-between md:px-10">
+      <Link to={'/'}>
       <div className="flex items-center gap-2">
         <img src={logo} alt="" className="w-8" />
         <h2 className="text-2xl font-medium tracking-wider font-Rubik">
           WIKI<span className="text-lime-400">MOEDA</span>
         </h2>
       </div>
+      </Link>
 
       <nav className="hidden md:block">
         <ul className="grid grid-flow-col gap-x-2">
@@ -58,8 +60,8 @@ const Header = () => {
           <span className="border-b border-2 w-[80%] border-lime-400"></span>
      </div>
 
-    
-          <div style={open ? {visibility: 'visible', right: '0'}:{visibility: 'hidden', right: '-100vh', borderRadius: '4em'}} id="menu" className="w-screen h-screen bg-neutral-950 absolute right-0 top-[4.6em] select-none" onClick={handleMenu}>
+          {open && <>
+          <div id="menu" className="w-screen h-screen bg-neutral-950 absolute right-0 top-[4.6em] select-none" onClick={handleMenu}>
           <ul className="flex flex-col justify-center items-center">
           <NavLink
             to={"/"}
@@ -88,6 +90,7 @@ const Header = () => {
         </ul>
           </div>
           
+              </>}
       
    
     </header>
