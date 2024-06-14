@@ -34,3 +34,7 @@ body {
   display: absolute;
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
+#menu{
+  transition: .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}

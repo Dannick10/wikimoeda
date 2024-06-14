@@ -58,8 +58,8 @@ const Header = () => {
           <span className="border-b border-2 w-[80%] border-lime-400"></span>
      </div>
 
-          {open && 
-          <div id="menu" className="w-screen h-screen bg-neutral-950 absolute left-0 top-[4.6em] select-none" onClick={handleMenu}>
+    
+          <div style={open ? {visibility: 'visible', right: '0'}:{visibility: 'hidden', right: '-100vh', borderRadius: '4em'}} id="menu" className="w-screen h-screen bg-neutral-950 absolute right-0 top-[4.6em] select-none" onClick={handleMenu}>
           <ul className="flex flex-col justify-center items-center">
           <NavLink
             to={"/"}
@@ -87,7 +87,7 @@ const Header = () => {
           </NavLink>
         </ul>
           </div>
-          }
+          
       
    
     </header>
