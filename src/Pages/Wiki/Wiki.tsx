@@ -64,7 +64,7 @@ const Wiki = () => {
           Tipo de Investimentos
         </h2>
 
-        <div className="px-10 flex flex-col gap-10 w-[80%] lg:w-[60%]">
+        <div className="flex flex-col gap-10 w-[80%] lg:w-[60%]">
           {Object.entries(TypeInvesting).map((name, index) => (
             <>
               <aside

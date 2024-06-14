@@ -33,7 +33,7 @@ const Noticias = () => {
                 className="max-w-sm border border-gray-200 rounded-lg shadow-inner"
                 key={noticias.id}
                 data-aos="fade-up"
-                data-aos-duration="1000"
+                data-aos-duration="800"
               >
                 <div className="p-5 flex flex-col justify-between h-full">
                   <div>

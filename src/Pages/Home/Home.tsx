@@ -47,7 +47,7 @@ const Home = () => {
           </p>
         </div>
         <div className="relative" data-aos="fade-left" data-aos-duration="1000">
-          <img src={main} alt="" className="w-[50vw] lg:w-[60em]" />
+          <img src={main} alt="" className="w-[60vw] lg:w-[60em]" />
           <div className="bg-[#6C8C3B] absolute w-[30em] h-[30em] top-0 right-0 -z-10 rounded-full blur-3xl opacity-20"></div>
         </div>
       </section>

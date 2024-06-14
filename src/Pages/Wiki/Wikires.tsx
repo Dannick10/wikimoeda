@@ -19,7 +19,7 @@ const Wikires = () => {
   if (!data) {
     return (
       <>
-        <div className="flex flex-col items-center justify-cente p-5 gap-4 m-10 text-lime-400">
+        <div className="flex flex-col items-center justify-cente p-10 gap-4 my-10 text-lime-400">
           <h2 className="text-lg font-bold">
             Desculpe, Não foi possivel estabelecer uma conexão tente novamente
             mais tarde
