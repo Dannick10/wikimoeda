@@ -69,3 +69,28 @@ body {
     opacity: 1;
   }
 }
+
+.open{
+  transition: .4 cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.open span{
+  color: white;
+  transition: .7s cubic-bezier(.18,1.41,.64,.81)
+}
+
+.open span:first-child{
+    rotate: 40deg;
+   position: absolute;
+   width: 2.4em;
+}
+
+.open span:last-child{
+  rotate: -40deg;
+  position: absolute;
+  width: 2.4em;
+}
+
+.open span:nth-child(2){
+  display: none;
+}

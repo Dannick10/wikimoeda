@@ -16,6 +16,7 @@ const Wikires = () => {
 
   const { data, loading } = useWikiFetch(url);
 
+
   if (!data) {
     return (
       <>
@@ -30,10 +31,11 @@ const Wikires = () => {
             <i className="fa-solid fa-rotate-left"></i>
           </button>
         </div>
+
+        
       </>
     );
   }
-
   const sanitizedHtml: string = DOMPurify.sanitize(data.parse.text["*"]);
 
   return (
@@ -49,6 +51,18 @@ const Wikires = () => {
           <Loading />
         </>
       )}
+
+      {!data && <div className="flex flex-col items-center justify-cente p-10 gap-4 my-10 text-lime-400">
+          <h2 className="text-lg font-bold">
+            Desculpe, Não foi possivel estabelecer uma conexão tente novamente
+            mais tarde
+          </h2>
+          <i className="fa-regular fa-face-sad-tear text-xl"></i>
+          <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-lime-700 rounded-lg hover:bg-lime-800 focus:ring-4 focus:outline-none focus:ring-lime- gap-2">
+            Voltar para página anterior{" "}
+            <i className="fa-solid fa-rotate-left"></i>
+          </button>
+        </div>}
     </div>
   );
 };
