@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Inoticias } from "../../interfaces/Inoticiasinterface";
+import { useEffect } from "react";
 import { useNoticiasFetch } from "../../Hooks/useNoticiasFetch";
 import Aos from "aos";
 import "aos/dist/aos.css";

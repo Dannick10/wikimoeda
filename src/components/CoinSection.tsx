@@ -1,4 +1,3 @@
-import React from "react";
 import moeda from "/moeda.png";
 import { Icoin } from "../interfaces/IcoinInterface";
 

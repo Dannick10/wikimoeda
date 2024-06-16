@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Inoticias } from "../interfaces/Inoticiasinterface";
 
 export const useNoticiasFetch = (url: string) => {

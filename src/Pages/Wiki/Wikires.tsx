@@ -1,4 +1,3 @@
-import React from "react";
 import { useWikiFetch } from "../../Hooks/useWikiFetch";
 import DOMPurify from "dompurify";
 

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Aos from "aos";
 import "Aos/dist/aos.css";
-import coin from "/coin.svg";
 
 import main from "/main.png";
 
