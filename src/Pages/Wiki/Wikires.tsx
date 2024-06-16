@@ -8,7 +8,7 @@ import Loading from "../../components/Loading";
 const Wikires = () => {
   const paramsString: string = window.location.search;
   const urlParams: URLSearchParams = new URLSearchParams(paramsString);
-
+  console.log(urlParams)
   const dataValue: string | null = urlParams.get("q");
   console.log(dataValue);
 

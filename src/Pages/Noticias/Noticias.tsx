@@ -3,6 +3,7 @@ import { Inoticias } from "../../interfaces/Inoticiasinterface";
 import { useNoticiasFetch } from "../../Hooks/useNoticiasFetch";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Loading from "../../components/Loading";
 
 const Noticias = () => {
   useEffect(() => {
@@ -25,6 +26,7 @@ const Noticias = () => {
       </header>
 
       <section className="flex flex-wrap justify-evenly gap-10">
+        {loadingNoticias && <Loading />}
         {noticiasFetch &&
           Object.values(noticiasFetch.items).map((noticias) => (
             <>
