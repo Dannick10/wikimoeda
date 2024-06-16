@@ -1,6 +1,7 @@
 import React from "react";
 
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 import Noticias from "./Pages/Noticias/Noticias";
 import Home from "./Pages/Home/Home";
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/wikires" Component={Wikires} />
           </Routes>
         </div>
+        <Footer/>
       </BrowserRouter>
     </div>
   );
