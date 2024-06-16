@@ -30,12 +30,7 @@ const Header = () => {
           >
             <p>Inicio</p>
           </NavLink>
-          <NavLink
-            to={"/cotacao"}
-            className="cursor-pointer px-2 flex hover:text-lime-400 w-30"
-          >
-            <p>Cotação</p>
-          </NavLink>
+
           <NavLink
             to={"/Wiki"}
             className="cursor-pointer px-2  hover:text-lime-400 w-30"
@@ -77,12 +72,6 @@ const Header = () => {
                 Inicio
               </NavLink>
               <NavLink
-                to={"/cotacao"}
-                className="cursor-pointer px-2 hover:text-lime-400 border-b-2 border-lime-400 w-full flex justify-center p-10"
-              >
-                Cotação
-              </NavLink>
-              <NavLink
                 to={"/Wiki"}
                 className="cursor-pointer px-2  hover:text-lime-400 border-b-2 border-lime-400 w-full flex justify-center p-10"
               >
@@ -95,6 +84,31 @@ const Header = () => {
                 Noticias
               </NavLink>
             </ul>
+            <div className="flex flex-col items-center gap-2 my-8">
+              <h2 className="text-sm text-gray-400">Me siga para mais</h2>
+              <a href="https://github.com/Dannick10" target="_blank">
+                <button
+                  type="button"
+                  className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2 gap-2"
+                >
+                  <i className="fa-brands fa-github-alt"></i>
+                  Github
+                </button>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/futurodevdaniel/"
+                target="_blank"
+              >
+                <button
+                  type="button"
+                  className="text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 me-2 mb-2 gap-2"
+                >
+                  <i className="fa-brands fa-linkedin"></i>
+                  Linkedin
+                </button>
+              </a>
+            </div>
           </div>
         </>
       )}
