@@ -10,10 +10,8 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: [
-        'aos',
-      ],
-    },
+      external: ['Aos/dist/aos.css']
+    }
   },
   css: {
     preprocessorOptions: {
