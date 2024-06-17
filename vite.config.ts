@@ -18,7 +18,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "${path.resolve(__dirname, 'src/styles/global.scss')}";`
+        additionalData: `@import "./path/to/aos.css";`
       }
     }
   }
