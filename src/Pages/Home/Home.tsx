@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Aos from "aos";
-import "Aos/dist/aos.css";
+import "aos/dist/aos.css";
 
 import main from "/main.png";
 

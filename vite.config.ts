@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import * as path from 'path'
+import styleImport from 'vite-plugin-style-import';
 
 // https://vitejs.dev/config/
 export default defineConfig({
