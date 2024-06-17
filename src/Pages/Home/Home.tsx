@@ -12,17 +12,14 @@ import CoinSection from "../../components/CoinSection";
 import Loading from "../../components/Loading";
 
 const Home = () => {
-  
   useEffect(() => {
     Aos.init();
-  });
+  }, []);
 
-  const [query, Setquery] = useState<string>(
-    "USD-BRL,EUR-BRL,BTC-BRL,ETH-BRL,CAD-BRL,GBP-BRL,ARS-BRL,LTC-BRL,JPY-BRL,CHF-BRL,AUD-BRL,CNY-BRL,ILS-BRL,XRP-BRL"
-  );
-  const [url, setUrl] = useState<string>(
-    `https://economia.awesomeapi.com.br/json/last/${query}`
-  );
+  const query: string =
+    "USD-BRL,EUR-BRL,BTC-BRL,ETH-BRL,CAD-BRL,GBP-BRL,ARS-BRL,LTC-BRL,JPY-BRL,CHF-BRL,AUD-BRL,CNY-BRL,ILS-BRL,XRP-BRL";
+
+  const url: string = `https://economia.awesomeapi.com.br/json/last/${query}`;
 
   const { data: coinFetch, loading } = useFetch(url);
 
@@ -39,6 +36,7 @@ const Home = () => {
           data-aos-duration="1000"
         >
           <h3 className="text-2xl font-Rubik">Wikimoeda</h3>
+          {loadingNoticias && <Loading />}
           <p className="text-xl">
             Mantenha-se atualizado com as últimas cotações, notícias e
             informações detalhadas sobre diversas moedas, incluindo o Real,
@@ -67,11 +65,7 @@ const Home = () => {
         )}
       </section>
 
-      {loading ? (
-       <Loading/>
-      ) : (
-        <CoinSection data={coinFetch} />
-      )}
+      {loading ? <Loading /> : <CoinSection data={coinFetch} />}
     </main>
   );
 };

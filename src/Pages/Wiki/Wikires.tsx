@@ -7,14 +7,11 @@ import Loading from "../../components/Loading";
 const Wikires = () => {
   const paramsString: string = window.location.search;
   const urlParams: URLSearchParams = new URLSearchParams(paramsString);
-  console.log(urlParams)
   const dataValue: string | null = urlParams.get("q");
-  console.log(dataValue);
 
   const url: string = `https://pt.wikipedia.org/w/api.php?action=parse&page=${dataValue}&format=json&prop=text&origin=*`;
 
   const { data, loading } = useWikiFetch(url);
-
 
   if (!data) {
     return (
@@ -30,8 +27,6 @@ const Wikires = () => {
             <i className="fa-solid fa-rotate-left"></i>
           </button>
         </div>
-
-        
       </>
     );
   }
@@ -51,7 +46,8 @@ const Wikires = () => {
         </>
       )}
 
-      {!data && <div className="flex flex-col items-center justify-cente p-10 gap-4 my-10 text-lime-400">
+      {!data && (
+        <div className="flex flex-col items-center justify-cente p-10 gap-4 my-10 text-lime-400">
           <h2 className="text-lg font-bold">
             Desculpe, Não foi possivel estabelecer uma conexão tente novamente
             mais tarde
@@ -61,7 +57,8 @@ const Wikires = () => {
             Voltar para página anterior{" "}
             <i className="fa-solid fa-rotate-left"></i>
           </button>
-        </div>}
+        </div>
+      )}
     </div>
   );
 };
