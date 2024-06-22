@@ -30,6 +30,12 @@ const Header = () => {
           >
             <p>Inicio</p>
           </NavLink>
+          <NavLink
+            to={"/conversor"}
+            className="cursor-pointer px-2 flex hover:text-lime-400 w-30"
+          >
+            <p>Conversor</p>
+          </NavLink>
 
           <NavLink
             to={"/Wiki"}
@@ -71,6 +77,14 @@ const Header = () => {
               >
                 Inicio
               </NavLink>
+              <NavLink
+                to={"/conversor"}
+                className="cursor-pointer px-2 hover:text-lime-400 w-30 border-b-2 border-lime-400  w-full flex justify-center p-10"
+              >
+                Conversor
+              </NavLink>
+
+              
               <NavLink
                 to={"/Wiki"}
                 className="cursor-pointer px-2  hover:text-lime-400 border-b-2 border-lime-400 w-full flex justify-center p-10"
