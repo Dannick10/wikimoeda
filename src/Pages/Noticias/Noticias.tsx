@@ -3,15 +3,41 @@ import { useNoticiasFetch } from "../../Hooks/useNoticiasFetch";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Loading from "../../components/Loading";
+import Pagination from "../../components/Pagination";
 
 const Noticias = () => {
   useEffect(() => {
     Aos.init();
   }, []);
 
-  const { data: noticiasFetch, loading: loadingNoticias } = useNoticiasFetch(
-    "https://servicodados.ibge.gov.br/api/v3/noticias/?busca=economia?page=1?qtd=1"
+  const {
+    data: noticiasFetch,
+    loading: loadingNoticias,
+    page,
+    SetPage,
+  } = useNoticiasFetch(
+    "https://servicodados.ibge.gov.br/api/v3/noticias/?busca=economia"
   );
+
+  console.log(noticiasFetch);
+
+  const changePage = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const button = e.currentTarget;
+    let number = parseInt(button.innerText);
+    scroll(0, 0);
+    SetPage(number);
+  };
+
+  const nextandpreviuspage = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const button = e.currentTarget;
+    scroll(0, 0)
+
+    if (button.innerText == "Avançar") {
+      SetPage(page + 1);
+    } else {
+      SetPage(page - 1);
+    }
+  };
 
   return (
     <div className="p-4">
@@ -81,6 +107,18 @@ const Noticias = () => {
             </>
           ))}
       </section>
+      <nav>
+        {noticiasFetch && 
+        <Pagination
+        totalItems={noticiasFetch?.count}
+        quantitforPage={noticiasFetch?.showingTo}
+        endMaxPage={noticiasFetch?.totalPages}
+        page={page}
+        changePage={changePage}
+        NextandPreviusPage={nextandpreviuspage}
+        />
+      }
+      </nav>
     </div>
   );
 };

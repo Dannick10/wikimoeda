@@ -9,7 +9,6 @@ const Header = () => {
     setOpen(open ? false : true);
   };
 
-  console.log(open);
 
   return (
     <header className="flex items-center justify-evenly p-4 fixed z-10 w-full bg-[#0D0D0D] top-0 border-b-2 border-b-lime-400 links md:justify-between md:px-10">

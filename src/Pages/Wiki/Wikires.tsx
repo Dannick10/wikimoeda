@@ -13,6 +13,7 @@ const Wikires = () => {
 
   const { data, loading } = useWikiFetch(url);
 
+
   if (!data) {
     return (
       <>

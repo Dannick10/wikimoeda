@@ -1,7 +1,8 @@
 export interface Inoticias {
   count: number;
   page: number;
-  totalpages: number;
+  totalPages: number;
+  showingTo: number;
   items: {
     id: string;
     titulo: string;

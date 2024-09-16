@@ -4,13 +4,14 @@ import { Inoticias } from "../interfaces/Inoticiasinterface";
 export const useNoticiasFetch = (url: string) => {
   const [data, setData] = useState<Inoticias>();
   const [loading, setLoading] = useState<boolean>(false);
+  const [page, SetPage] = useState<number>(2)
 
   useEffect(() => {
     const FetchData = async () => {
       setLoading(true);
 
       try {
-        const res = await fetch(url);
+        const res = await fetch(`${url}&page=${page}`);
         const json = await res.json();
         setData(json);
       } catch {
@@ -21,7 +22,7 @@ export const useNoticiasFetch = (url: string) => {
     };
 
     FetchData();
-  }, [url]);
+  }, [url,page]);
 
-  return { data, loading };
+  return { data, loading, page, SetPage };
 };
