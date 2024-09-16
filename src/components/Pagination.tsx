@@ -44,16 +44,17 @@ const Pagination = ({
   return (
     <div className="flex justify-center items-center pt-10">
       <button
-        className={`p-1 px-2 w-15 border-[1px] border-lime-400 rounded-s-md ${Number(page) == 1 ? "opacity-5" : ""}`}
+        className={`p-1 px-2 w-15 border-[1px] border-lime-400 rounded-s-md disabled:opacity-5`}
         onClick={NextandPreviusPage}
+        disabled={Number(page) <= 1}
       >
         Voltar
       </button>
       {generatePage()}
       <button
-        className={`p-1 px-2 w-15 border-[1px] border-lime-400 rounded-e-md  ${
-          Number(page) === totalPage ? "opacity-5" : ""
-        }`}
+        className={`p-1 px-2 w-15 border-[1px] border-lime-400 rounded-e-md disabled:opacity-5`
+      }
+      disabled={Number(page) >= endMaxPage}
         onClick={NextandPreviusPage}
       >
         Avançar
