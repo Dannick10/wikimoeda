@@ -4,7 +4,7 @@ import { Inoticias } from "../interfaces/Inoticiasinterface";
 export const useNoticiasFetch = (url: string) => {
   const [data, setData] = useState<Inoticias>();
   const [loading, setLoading] = useState<boolean>(false);
-  const [page, SetPage] = useState<number>(2)
+  const [page, SetPage] = useState<number>(1)
 
   useEffect(() => {
     const FetchData = async () => {

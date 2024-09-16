@@ -19,8 +19,6 @@ const Noticias = () => {
     "https://servicodados.ibge.gov.br/api/v3/noticias/?busca=economia"
   );
 
-  console.log(noticiasFetch);
-
   const changePage = (e: React.MouseEvent<HTMLButtonElement>) => {
     const button = e.currentTarget;
     let number = parseInt(button.innerText);

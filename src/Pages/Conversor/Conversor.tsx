@@ -33,7 +33,6 @@ const Conversor = () => {
   const { data, loading } = useFetch(url);
 
   const [calCoin, SetCalCoin] = useState<number>(1);
-  console.log(oneSymbol);
 
   if (loading) {
     return <Loading />;
