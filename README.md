@@ -21,6 +21,7 @@ Wikimoeda é um projeto desenvolvido utilizando React, TailwindCSS, TypeScript e
 | **TypeScript**       | Superset de JavaScript que adiciona tipagem estática.                                      |
 | **React Router**     | Para gerenciamento de rotas.                                                               |
 | **React Hooks**      | Para gerenciamento de estados.                                                             |
+| **Cypress**  | testes unitários da aplicação                        |
 | **URLSearchParams**  | Utilitários para trabalhar com a string de consulta de uma URL.                            |
 | **npm**              | Gerenciador de pacotes para instalação e execução.    
 
