@@ -108,8 +108,6 @@ const Noticias = () => {
       <nav>
         {noticiasFetch && 
         <Pagination
-        totalItems={noticiasFetch?.count}
-        quantitforPage={noticiasFetch?.showingTo}
         endMaxPage={noticiasFetch?.totalPages}
         page={page}
         changePage={changePage}

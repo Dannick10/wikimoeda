@@ -3,8 +3,6 @@ import React from "react";
 
 type Props = {
   page: number;
-  totalItems: number;
-  quantitforPage: number;
   endMaxPage: number
   changePage: (e: React.MouseEvent<HTMLButtonElement>) => void;
   NextandPreviusPage: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -12,8 +10,6 @@ type Props = {
 
 const Pagination = ({
   page,
-  totalItems,
-  quantitforPage,
   changePage,
   endMaxPage,
   NextandPreviusPage,
@@ -21,7 +17,6 @@ const Pagination = ({
 
 
 
-  const totalPage = Math.ceil(totalItems / quantitforPage);
   const startPage = Math.max(page - 2, 1);
   const endPage = Math.min(page + 2, endMaxPage);
 
