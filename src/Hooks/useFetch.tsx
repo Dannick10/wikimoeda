@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Icoin } from "../interfaces/IcoinInterface";
 
 export const useFetch = <T,>(url: string) => {
   const [data, setData] = useState<T>();

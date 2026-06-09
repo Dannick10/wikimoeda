@@ -2,12 +2,12 @@ import moeda from "/moeda.png";
 import { Icoin } from "../interfaces/IcoinInterface";
 
 interface props {
-  data?: Icoin;
+  data?: Record<string, Icoin>;
 }
 
 const CoinSection = ({ data }: props) => {
   const currency = (num: number, cur: string): string => {
-    let convert = new Intl.NumberFormat("pt-br", {
+    const convert = new Intl.NumberFormat("pt-br", {
       style: "currency",
       currency: cur,
     });

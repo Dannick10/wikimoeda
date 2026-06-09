@@ -10,6 +10,7 @@ import { useNoticiasFetch } from "../../Hooks/useNoticiasFetch";
 import CardBanner from "../../components/CardBanner";
 import CoinSection from "../../components/CoinSection";
 import Loading from "../../components/Loading";
+import { Icoin } from "../../interfaces/IcoinInterface";
 
 const Home = () => {
   useEffect(() => {
@@ -21,7 +22,7 @@ const Home = () => {
 
   const url: string = `https://economia.awesomeapi.com.br/json/last/${query}`;
 
-  const { data: coinFetch, loading } = useFetch(url);
+  const { data: coinFetch, loading } = useFetch<Record<string, Icoin>>(url);
 
   const { data: noticiasFetch, loading: loadingNoticias } = useNoticiasFetch(
     "https://servicodados.ibge.gov.br/api/v3/noticias/?busca=economia?page=1?qtd=1"
