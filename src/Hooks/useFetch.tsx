@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Icoin } from "../interfaces/IcoinInterface";
 
-export const useFetch = (url: string) => {
-  const [data, setData] = useState<Icoin>();
+export const useFetch = <T,>(url: string) => {
+  const [data, setData] = useState<T>();
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {

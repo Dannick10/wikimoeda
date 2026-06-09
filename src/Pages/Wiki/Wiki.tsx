@@ -128,7 +128,7 @@ const Wiki = () => {
           {Object.entries(TypeInvesting).map((name, index) => (
             <>
               <aside
-                className="border-l border-b border-b-lime-400 border-l-lime-400 px-3 relative"
+                className="bg-gray-950/50 border-l border-b border-b-lime-400 border-l-lime-400 px-3 relative"
                 data-aos="fade-up"
                 key={index}
               >
