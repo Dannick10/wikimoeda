@@ -1,9 +1,8 @@
-
 import React from "react";
 
 type Props = {
   page: number;
-  endMaxPage: number
+  endMaxPage: number;
   changePage: (e: React.MouseEvent<HTMLButtonElement>) => void;
   NextandPreviusPage: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
@@ -15,8 +14,6 @@ const Pagination = ({
   NextandPreviusPage,
 }: Props) => {
 
-
-
   const startPage = Math.max(page - 2, 1);
   const endPage = Math.min(page + 2, endMaxPage);
 
@@ -26,7 +23,12 @@ const Pagination = ({
     for (let i = startPage; i <= endPage; i++) {
       list.push(
         <button
-          className={`p-1 px-2 w-7 rounded-sm border-[1px] border-lime-400  ${Number(page) == i ? "bg-lime-50 text-black font-bold" : ""}`}
+          key={`page-${i}`}
+          className={`h-9 w-9 text-xs font-semibold flex items-center justify-center rounded-xl border transition-all duration-200 active:scale-95 ${
+            Number(page) === i
+              ? "bg-lime-500 text-gray-950 border-lime-500 shadow-md font-bold"
+              : "bg-gray-900/40 text-gray-400 border-gray-800/80 hover:border-lime-500/30 hover:text-white backdrop-blur-md"
+          }`}
           onClick={changePage}
         >
           {i}
@@ -37,22 +39,26 @@ const Pagination = ({
   };
 
   return (
-    <div className="flex justify-center items-center pt-10">
+    <div className="flex justify-center items-center gap-2 pt-8 w-full">
+
       <button
-        className={`p-1 px-2 w-15 border-[1px] border-lime-400 rounded-s-md disabled:opacity-5`}
+        className="h-9 px-4 text-xs font-semibold bg-gray-900/40 text-gray-400 border border-gray-800/80 rounded-xl hover:border-lime-500/30 hover:text-white transition-all duration-200 backdrop-blur-md disabled:opacity-20 disabled:pointer-events-none active:scale-95 flex items-center gap-1.5"
         onClick={NextandPreviusPage}
         disabled={Number(page) <= 1}
       >
-        Voltar
+        <i className="fa-solid fa-chevron-left text-[10px]" /> Voltar
       </button>
-      {generatePage()}
+
+      <div className="flex items-center gap-1.5">
+        {generatePage()}
+      </div>
+
       <button
-        className={`p-1 px-2 w-15 border-[1px] border-lime-400 rounded-e-md disabled:opacity-5`
-      }
-      disabled={Number(page) >= endMaxPage}
+        className="h-9 px-4 text-xs font-semibold bg-gray-900/40 text-gray-400 border border-gray-800/80 rounded-xl hover:border-lime-500/30 hover:text-white transition-all duration-200 backdrop-blur-md disabled:opacity-20 disabled:pointer-events-none active:scale-95 flex items-center gap-1.5"
         onClick={NextandPreviusPage}
+        disabled={Number(page) >= endMaxPage}
       >
-        Avançar
+        Avançar <i className="fa-solid fa-chevron-right text-[10px]" />
       </button>
     </div>
   );
