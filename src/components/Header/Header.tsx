@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "/logo.png";
 
@@ -6,105 +6,135 @@ const Header = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   const handleMenu = () => {
-    setOpen(open ? false : true);
+    setOpen(!open);
   };
 
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `text-sm font-medium tracking-wide transition-colors duration-200 cursor-pointer ${
+      isActive
+        ? "text-lime-400 font-semibold"
+        : "text-gray-400 hover:text-white"
+    }`;
 
+  const mobileNavLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `w-full text-center py-6 text-base border-b border-gray-900 transition-colors ${
+      isActive
+        ? "text-lime-400 font-bold bg-lime-500/5"
+        : "text-gray-300 hover:text-white hover:bg-gray-900/30"
+    }`;
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  console.log(innerWidth);
   return (
-    <header className="flex items-center justify-evenly p-4 fixed z-10 w-full bg-[#0D0D0D] top-0 border-b-2 border-b-lime-400 links md:justify-between md:px-10">
-      <Link to={"/"}>
-        <div className="flex items-center gap-2">
-          <img src={logo} alt="" className="w-8" />
-          <h2 className="text-2xl font-medium tracking-wider font-Rubik">
-            WIKI<span className="text-lime-400">MOEDA</span>
-          </h2>
-        </div>
+    <header className="fixed top-0 left-0 z-50 w-full bg-gray-950 backdrop-blur-md border-b border-gray-900 px-6 py-4 md:px-10 flex items-center justify-between transition-all duration-300">
+      <Link
+        to="/"
+        className="flex items-center gap-2.5 active:scale-98 transition-transform"
+      >
+        <img
+          src={logo}
+          alt="Wikimoeda Logo"
+          className="w-7 h-7 object-contain"
+        />
+        <h2 className="text-xl font-bold tracking-wider font-Rubik text-white">
+          WIKI<span className="text-lime-400">MOEDA</span>
+        </h2>
       </Link>
 
       <nav className="hidden md:block">
-        <ul className="grid grid-flow-col gap-x-2">
-          <NavLink
-            to={"/"}
-            className="cursor-pointer px-2 flex hover:text-lime-400 w-30"
-          >
-            <p>Inicio</p>
-          </NavLink>
-          <NavLink
-            to={"/conversor"}
-            className="cursor-pointer px-2 flex hover:text-lime-400 w-30"
-          >
-            <p>Conversor</p>
-          </NavLink>
-
-          <NavLink
-            to={"/Wiki"}
-            className="cursor-pointer px-2  hover:text-lime-400 w-30"
-          >
-            WIKI
-          </NavLink>
-          <NavLink
-            to={"/noticias"}
-            className="cursor-pointer px-2  hover:text-lime-400 w-30 text-center"
-          >
-            Noticias
-          </NavLink>
+        <ul className="flex items-center gap-8">
+          <li>
+            <NavLink to="/" className={navLinkClass}>
+              Início
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/conversor" className={navLinkClass}>
+              Conversor
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/Wiki" className={navLinkClass}>
+              Wiki
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/noticias" className={navLinkClass}>
+              Notícias
+            </NavLink>
+          </li>
         </ul>
       </nav>
 
-      <div
-        className={`cursor-pointer right-10 border-lime-400 border-2 w-10 h-10 rounded-md flex flex-col justify-around items-center md:hidden ${
-          open && "open"
-        }`}
+      <button
+        type="button"
+        className="w-10 h-10 flex flex-col justify-center items-center gap-1.5 border border-gray-800 rounded-xl bg-gray-900/30 md:hidden focus:outline-none transition-all duration-200 active:scale-90"
         onClick={handleMenu}
+        aria-label="Toggle Menu"
       >
-        <span className="border-b border-2 w-[2em] border-lime-400"></span>
-        <span className="border-b border-2 w-[2em] border-lime-400"></span>
-        <span className="border-b border-2 w-[2em] border-lime-400"></span>
-      </div>
+        <span
+          className={`h-0.5 w-5 bg-lime-400 rounded-full transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`}
+        />
+        <span
+          className={`h-0.5 w-5 bg-lime-400 rounded-full transition-all duration-200 ${open ? "opacity-0" : ""}`}
+        />
+        <span
+          className={`h-0.5 w-5 bg-lime-400 rounded-full transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`}
+        />
+      </button>
 
       {open && (
-        <>
-          <div
-            id="menu"
-            className="w-screen h-screen bg-neutral-950 absolute right-0 top-[4.6em] select-none"
-            onClick={handleMenu}
-          >
-            <ul className="flex flex-col justify-center items-center">
-              <NavLink
-                to={"/"}
-                className="cursor-pointer px-2 hover:text-lime-400 w-30 border-b-2 border-lime-400  w-full flex justify-center p-10"
-              >
-                Inicio
-              </NavLink>
-              <NavLink
-                to={"/conversor"}
-                className="cursor-pointer px-2 hover:text-lime-400 w-30 border-b-2 border-lime-400  w-full flex justify-center p-10"
-              >
-                Conversor
-              </NavLink>
+        <div
+          id="menu"
+          className="fixed inset-0 top-[69px] w-screen h-[calc(100vh-69px)] bg-gray-950/95 backdrop-blur-lg z-40 flex flex-col select-none animate-fadeIn"
+          onClick={handleMenu}
+        >
+          <nav className="w-full flex flex-col">
+            <NavLink to="/" className={mobileNavLinkClass}>
+              Início
+            </NavLink>
+            <NavLink to="/conversor" className={mobileNavLinkClass}>
+              Conversor
+            </NavLink>
+            <NavLink to="/Wiki" className={mobileNavLinkClass}>
+              Wiki
+            </NavLink>
+            <NavLink to="/noticias" className={mobileNavLinkClass}>
+              Notícias
+            </NavLink>
+          </nav>
 
-              
-              <NavLink
-                to={"/Wiki"}
-                className="cursor-pointer px-2  hover:text-lime-400 border-b-2 border-lime-400 w-full flex justify-center p-10"
+          <div className="mt-auto mb-10 flex flex-col items-center gap-4 px-6 w-full">
+            <span className="text-xs font-semibold tracking-wider text-gray-600 uppercase">
+              Me siga para mais
+            </span>
+
+            <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm justify-center">
+              <a
+                href="https://github.com/Dannick10"
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1"
+                onClick={(e) => e.stopPropagation()}
               >
-                WIKI
-              </NavLink>
-              <NavLink
-                to={"/noticias"}
-                className="cursor-pointer px-2  hover:text-lime-400  border-b-2 border-lime-400 w-full flex justify-center p-10"
-              >
-                Noticias
-              </NavLink>
-            </ul>
-            <div className="flex flex-col items-center gap-2 my-8">
-              <h2 className="text-sm text-gray-400">Me siga para mais</h2>
-              <a href="https://github.com/Dannick10" target="_blank">
                 <button
                   type="button"
-                  className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2 gap-2"
+                  className="w-full text-gray-300 bg-gray-900 hover:bg-gray-850 hover:text-white border border-gray-800 font-medium rounded-xl text-xs px-4 py-3 flex items-center justify-center gap-2 transition-all duration-200 active:scale-95"
                 >
-                  <i className="fa-brands fa-github-alt"></i>
+                  <i className="fa-brands fa-github-alt text-sm text-lime-400" />
                   Github
                 </button>
               </a>
@@ -112,18 +142,21 @@ const Header = () => {
               <a
                 href="https://www.linkedin.com/in/futurodevdaniel/"
                 target="_blank"
+                rel="noreferrer"
+                className="flex-1"
+                onClick={(e) => e.stopPropagation()}
               >
                 <button
                   type="button"
-                  className="text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 me-2 mb-2 gap-2"
+                  className="w-full text-gray-300 bg-gray-900 hover:bg-gray-850 hover:text-white border border-gray-800 font-medium rounded-xl text-xs px-4 py-3 flex items-center justify-center gap-2 transition-all duration-200 active:scale-95"
                 >
-                  <i className="fa-brands fa-linkedin"></i>
-                  Linkedin
+                  <i className="fa-brands fa-linkedin text-sm text-lime-400" />
+                  LinkedIn
                 </button>
               </a>
             </div>
           </div>
-        </>
+        </div>
       )}
     </header>
   );
