@@ -5,8 +5,7 @@ import "aos/dist/aos.css";
 import Loading from "../../components/Loading";
 import Pagination from "../../components/Pagination";
 import { NoticiaItem } from "../../interfaces/Inoticia";
-
-
+import { TitlePage } from "../../components/TitlePage";
 
 const Noticias = () => {
   useEffect(() => {
@@ -19,12 +18,12 @@ const Noticias = () => {
     page,
     SetPage,
   } = useNoticiasFetch(
-    "https://servicodados.ibge.gov.br/api/v3/noticias/?busca=economia"
+    "https://servicodados.ibge.gov.br/api/v3/noticias/?busca=economia",
   );
 
   const changePage = (e: React.MouseEvent<HTMLButtonElement>) => {
     const button = e.currentTarget;
-   const number = parseInt(button.innerText);
+    const number = parseInt(button.innerText);
     window.scroll(0, 0);
     SetPage(number);
   };
@@ -41,21 +40,13 @@ const Noticias = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12 min-h-screen flex flex-col gap-8">
-      
-      <header className="border-b border-gray-800 pb-5">
-        <div className="flex items-center gap-3 justify-between">
-          <div className="flex flex-col gap-1">
-            <h1 className="text-xl font-semibold text-white tracking-wide">
-              Notícias Econômicas
-            </h1>
-            <p className="text-xs text-gray-500">Atualizações em tempo real integradas via API do IBGE</p>
-          </div>
-          <div className="bg-gray-900/50 p-2.5 rounded-xl border border-gray-800 text-lime-400 shadow-sm">
-            <i className="fa-solid fa-newspaper text-base" />
-          </div>
-        </div>
-      </header>
+    <section className="max-w-6xl mx-auto px-4 py-12 min-h-screen flex flex-col gap-8">
+
+      <TitlePage
+        title=" Notícias Econômicas"
+        description="Atualizações em tempo real integradas via API do IBGE"
+        icon="fa-newspaper"
+      />
 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch justify-center w-full">
         {loadingNoticias && (
@@ -63,18 +54,21 @@ const Noticias = () => {
             <Loading />
           </div>
         )}
-        
-        {!loadingNoticias && noticiasFetch &&
-          Object.values(noticiasFetch.items as NoticiaItem[]).map((noticia) => (
+
+        {!loadingNoticias &&
+          noticiasFetch &&
+          Object.values(noticiasFetch.items as NoticiaItem[]).map((noticia, index) => (
             <aside
               key={noticia.id}
               className="bg-gray-900/40 backdrop-blur-md border border-gray-800/80 hover:border-lime-500/30 rounded-2xl flex flex-col justify-between transition-all duration-300 p-5 group shadow-lg"
               data-aos="fade-up"
-              data-aos-duration="800"
+             data-aos-delay={index * 50}
             >
               <div className="flex flex-col gap-3">
                 <span className="text-[10px] font-semibold text-gray-500 tracking-wider uppercase">
-                  {noticia.data_publicacao ? noticia.data_publicacao.split("T")[0].replace(/-/g, "/") : "Recente"}
+                  {noticia.data_publicacao
+                    ? noticia.data_publicacao.split("T")[0].replace(/-/g, "/")
+                    : "Recente"}
                 </span>
                 <h3 className="text-base font-bold text-white group-hover:text-lime-400 transition-colors duration-200 line-clamp-3 leading-snug">
                   {noticia.titulo}
@@ -123,7 +117,7 @@ const Noticias = () => {
           />
         )}
       </nav>
-    </div>
+    </section>
   );
 };
 

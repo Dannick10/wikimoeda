@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { TitlePage } from "../../components/TitlePage";
 
 const Wiki = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Wiki = () => {
   const handleSearch = (e: React.MouseEvent<HTMLElement>) => {
     const data = e.currentTarget.getAttribute("data-id");
     if (data) {
-      navigate('/wikires?q=' + encodeURIComponent(data));
+      navigate("/wikires?q=" + encodeURIComponent(data));
     }
   };
 
@@ -30,15 +31,15 @@ const Wiki = () => {
       "Os fundos de investimento são uma forma de investir in uma carteira diversificada de ativos, gerenciada por um gestor profissional.",
       "Existem diversos tipos de fundos, como os de renda fixa, renda variável e multimercado.",
     ],
-    "Aposentadoria": [
+    Aposentadoria: [
       "A previdência privada é uma forma de poupança de longo prazo que tem como objetivo garantir uma renda complementar no futuro, especialmente na aposentadoria.",
       "Pode ser contratada junto a bancos ou seguradoras.",
     ],
-    "Derivativo": [
+    Derivativo: [
       "Os investimentos em derivativos são contratos financeiros cujo valor deriva do valor de um ativo subjacente.",
       "Exemplos comuns de derivativos incluem contratos futuros, opções e swaps.",
     ],
-    "Commodity": [
+    Commodity: [
       "Investir em commodities significa investir em matérias-primas ou produtos básicos, como ouro, petróleo, grãos, entre outros.",
       "É uma forma de diversificar uma carteira de investimentos.",
     ],
@@ -61,17 +62,17 @@ const Wiki = () => {
       "O Dólar Americano (USD) é a moeda oficial dos Estados Unidos da América.",
       "É emitido pelo Federal Reserve, o banco central dos EUA.",
     ],
-    "Euro": [
+    Euro: [
       "O Euro (EUR) é a moeda oficial de 19 dos 27 países membros da União Europeia.",
       "É emitido pelo Banco Central Europeu.",
     ],
-    "Bitcoin": [
+    Bitcoin: [
       "Bitcoin (símbolo: ₿; abreviado ISO 4217: BTC ou XBT) é uma criptoinvenção descentralizada e de código aberto, um dinheiro eletrônico para transações financeiras ponto a ponto.",
-      "O bitcoin foi publicado em 2008 por Satoshi Nakamoto."
+      "O bitcoin foi publicado em 2008 por Satoshi Nakamoto.",
     ],
-    "Ethereum": [
+    Ethereum: [
       "Ethereum é uma plataforma descentralizada capaz de executar contratos inteligentes e aplicações descentralizadas usando a tecnologia blockchain.",
-      "O Ethereum foi fundado por Vitalik Buterin em janeiro de 2014."
+      "O Ethereum foi fundado por Vitalik Buterin em janeiro de 2014.",
     ],
     "Dólar Canadense": [
       "O Dólar Canadense (CAD) é a moeda oficial do Canadá.",
@@ -81,9 +82,9 @@ const Wiki = () => {
       "O Peso Argentino (ARS) é a moeda oficial da Argentina.",
       "É emitido pelo Banco Central da República Argentina.",
     ],
-    "Litecoin": [
+    Litecoin: [
       "Litecoin (símbolo: Ł; abrev: LTC) é uma criptomoeda sustentada por uma rede peer-to-peer e um projeto de software livre.",
-      "O Litecoin foi fundado por Charlie Lee"
+      "O Litecoin foi fundado por Charlie Lee",
     ],
     "Franco Suíço": [
       "O Franco Suíço (CHF) é a moeda oficial da Suíça e de Liechtenstein.",
@@ -96,15 +97,13 @@ const Wiki = () => {
   };
 
   return (
-    <section className="flex flex-col gap-12 items-center py-16 px-4 max-w-5xl mx-auto min-h-screen">
-      
+    <section className="max-w-6xl mx-auto px-4 py-12 min-h-screen flex flex-col gap-8">
       <div className="w-full flex flex-col gap-6">
-        <div className="flex flex-col gap-1 border-b border-gray-800 pb-4">
-          <h2 className="text-xl font-semibold text-white tracking-wide" data-aos="fade-right" data-aos-duration="600">
-            Tipos de Investimento
-          </h2>
-          <p className="text-xs text-gray-500">Explore os principais conceitos do mercado financeiro</p>
-        </div>
+        <TitlePage
+          title="Tipos de Investimento"
+          description="Explore os principais conceitos do mercado financeiro"
+          icon="fa-coins"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {Object.entries(TypeInvesting).map(([title, content], index) => (
@@ -126,9 +125,11 @@ const Wiki = () => {
                     </span>
                   </div>
                 </div>
-                <p className="text-gray-400 text-sm leading-relaxed font-normal">{content[0]}</p>
+                <p className="text-gray-400 text-sm leading-relaxed font-normal">
+                  {content[0]}
+                </p>
               </div>
-              
+
               <button
                 className="bg-gray-950/40 border border-gray-800 hover:border-lime-500/30 hover:bg-lime-500 text-gray-400 hover:text-gray-950 text-xs font-semibold py-2 px-4 rounded-xl mt-5 self-start transition-all duration-200 active:scale-95 shadow-inner"
                 onClick={handleSearch}
@@ -143,10 +144,16 @@ const Wiki = () => {
 
       <div className="w-full flex flex-col gap-6 mt-10">
         <div className="flex flex-col gap-1 border-b border-gray-800 pb-4">
-          <h2 className="text-xl font-semibold text-white tracking-wide" data-aos="fade-right" data-aos-duration="600">
+          <h2
+            className="text-xl font-semibold text-white tracking-wide"
+            data-aos="fade-right"
+            data-aos-duration="600"
+          >
             Moedas Mundiais
           </h2>
-          <p className="text-xs text-gray-500">Conheça os ativos monetários e criptomoedas globais</p>
+          <p className="text-xs text-gray-500">
+            Conheça os ativos monetários e criptomoedas globais
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -169,7 +176,9 @@ const Wiki = () => {
                     </span>
                   </div>
                 </div>
-                <p className="text-gray-400 text-sm leading-relaxed font-normal">{content[0]}</p>
+                <p className="text-gray-400 text-sm leading-relaxed font-normal">
+                  {content[0]}
+                </p>
               </div>
 
               <button
@@ -183,7 +192,6 @@ const Wiki = () => {
           ))}
         </div>
       </div>
-
     </section>
   );
 };

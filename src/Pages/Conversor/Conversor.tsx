@@ -6,6 +6,7 @@ import { HiArrowsRightLeft } from "react-icons/hi2";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { Icoin } from "../../interfaces/IcoinInterface";
+import { TitlePage } from "../../components/TitlePage";
 
 
 
@@ -52,12 +53,14 @@ const Conversor = () => {
 
   return (
     <section 
-      className="flex items-center justify-center min-h-[60vh] px-4 mb-20"
-      data-aos="zoom-in"
-      data-aos-duration="800"
+      className="max-w-6xl mx-auto px-4 py-12 min-h-screen flex flex-col gap-8" 
     >
-      <div className="w-full max-w-md backdrop-blur-md border border-gray-800 rounded-2xl p-6 shadow-2xl flex flex-col gap-6">
-        
+      <TitlePage
+        title="Conversor de Moedas"
+        description="Converta valores entre diferentes moedas com taxas de câmbio atualizadas em tempo real."
+        icon="fa-coins"
+      />
+      <div className="w-full  backdrop-blur-md border border-gray-800 rounded-2xl p-6 shadow-2xl flex flex-col gap-6" data-aos="fade-up">     
         <div className="flex flex-col gap-1 border-b border-gray-800 pb-4">
           <h2 className="text-xl font-semibold text-white tracking-wide">Conversor de Moedas</h2>
           {coinInfo ? (
