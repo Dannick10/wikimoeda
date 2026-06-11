@@ -1,16 +1,10 @@
 import { useState } from "react";
-import { useFetch } from "../../Hooks/useFetch";
 import Loading from "../../components/Loading";
 import { FaCoins } from "react-icons/fa6";
 import { HiArrowsRightLeft } from "react-icons/hi2";
-import { Icoin } from "../../interfaces/IcoinInterface";
 import { TitlePage } from "../../components/TitlePage";
+import { useConversorFetch } from "../../Hooks/useConversorFetch";
 
-
-
-interface FetchResponse {
-  [key: string]: Icoin;
-}
 
 const Conversor = () => {
 
@@ -22,8 +16,7 @@ const Conversor = () => {
   const [twoSymbol, setTwoSymbol] = useState("BRL");
   const [calCoin, setCalCoin] = useState<number>(1);
 
-  const url = `https://economia.awesomeapi.com.br/json/last/${oneSymbol}-${twoSymbol}`;
-  const { data, loading } = useFetch<FetchResponse>(url);
+  const { data, loading } = useConversorFetch(oneSymbol,twoSymbol);
 
   const formatCurrency = (num: number, cur: string): string => {
     const locale = cur === "BRL" ? "pt-BR" : "en-US";
