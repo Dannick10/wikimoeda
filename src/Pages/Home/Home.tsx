@@ -1,22 +1,12 @@
-import { useEffect } from "react";
-import Aos from "aos";
-import "aos/dist/aos.css";
-
 import main from "/main.png";
-
 import { useFetch } from "../../Hooks/useFetch";
 import { useNoticiasFetch } from "../../Hooks/useNoticiasFetch";
-
 import CardBanner from "../../components/CardBanner";
 import CoinSection from "../../components/CoinSection";
 import Loading from "../../components/Loading";
 import { Icoin } from "../../interfaces/IcoinInterface";
 
 const Home = () => {
-  useEffect(() => {
-    Aos.init();
-  }, []);
-
   const query: string =
     "USD-BRL,EUR-BRL,BTC-BRL,ETH-BRL,CAD-BRL,GBP-BRL,ARS-BRL,LTC-BRL,JPY-BRL,CHF-BRL,AUD-BRL,CNY-BRL,ILS-BRL,XRP-BRL";
 
@@ -25,7 +15,7 @@ const Home = () => {
   const { data: coinFetch, loading } = useFetch<Record<string, Icoin>>(url);
 
   const { data: noticiasFetch, loading: loadingNoticias } = useNoticiasFetch(
-    "https://servicodados.ibge.gov.br/api/v3/noticias/?busca=economia?page=1?qtd=1"
+    "https://servicodados.ibge.gov.br/api/v3/noticias/?busca=economia?page=1?qtd=1",
   );
 
   return (

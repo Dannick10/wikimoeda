@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useFetch } from "../../Hooks/useFetch";
 import Loading from "../../components/Loading";
 import { FaCoins } from "react-icons/fa6";
 import { HiArrowsRightLeft } from "react-icons/hi2";
-import Aos from "aos";
-import "aos/dist/aos.css";
 import { Icoin } from "../../interfaces/IcoinInterface";
 import { TitlePage } from "../../components/TitlePage";
 
@@ -15,9 +13,6 @@ interface FetchResponse {
 }
 
 const Conversor = () => {
-  useEffect(() => {
-    Aos.init();
-  }, []);
 
   const currencies: string[] = [
     "BRL", "USD", "EUR", "GBP", "ARS", "CAD", "AUD", "JPY", "CHF", "CNY"
