@@ -29,9 +29,9 @@ const Home = () => {
           <h3 className="text-2xl font-Rubik">Wikimoeda</h3>
           {loadingNoticias && <Loading />}
           <p className="text-xl">
-            Mantenha-se atualizado com as últimas cotações, notícias e
-            informações detalhadas sobre diversas moedas, incluindo o Real,
-            Dólar e Bitcoin, tudo isso no Wikimoeda.
+            Fique atualizado com as notícias mais recentes sobre moedas,
+            criptomoedas, investimentos, inflação, mercado internacional e os
+            principais acontecimentos que impactam a economia.
           </p>
         </div>
         <div className="relative" data-aos="fade-left" data-aos-duration="1000">
@@ -41,21 +41,16 @@ const Home = () => {
       </section>
 
       <section
-        className="my-6 text-center flex flex-col gap-4"
-        data-aos="fade-right"
-        data-aos-duration="500"
+        className="flex flex-col gap-6 my-20 text-center"
+        data-aos="fade-up"
+        data-aos-duration="400"
       >
-        <h2>
-          ultimas <span className="text-lime-400">noticias</span> no mundo da{" "}
-          <b>economia</b>
+        <h2 className="mt-2 text-4xl font-bold">
+          Últimas notícias da <span className="text-lime-400">economia</span>
         </h2>
-        {noticiasFetch && (
-          <>
-            <CardBanner data={noticiasFetch} />
-          </>
-        )}
-      </section>
 
+        {noticiasFetch && <CardBanner data={noticiasFetch} />}
+      </section>
       {loading ? <Loading /> : <CoinSection data={coinFetch} />}
     </main>
   );
