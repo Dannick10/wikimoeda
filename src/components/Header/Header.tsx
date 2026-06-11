@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "/logo.png";
+import { MenuMobile } from "../MenuMobile";
+
+type NavLinkProps = {
+  label: string;
+  to: string;
+};
 
 const Header = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -23,6 +29,10 @@ const Header = () => {
         : "text-gray-300 hover:text-white hover:bg-gray-900/30"
     }`;
 
+  const handleClickMenu = () => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  };
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -37,7 +47,13 @@ const Header = () => {
     };
   }, []);
 
-  console.log(innerWidth);
+  const NavItems: NavLinkProps[] = [
+    { label: "Início", to: "/" },
+    { label: "Conversor", to: "/conversor" },
+    { label: "Wiki", to: "/Wiki" },
+    { label: "Notícias", to: "/noticias" },
+  ];
+
   return (
     <header className="fixed top-0 left-0 z-50 w-full bg-gray-950 backdrop-blur-md border-b border-gray-900 px-6 py-4 md:px-10 flex items-center justify-between transition-all duration-300">
       <Link
@@ -56,26 +72,17 @@ const Header = () => {
 
       <nav className="hidden md:block">
         <ul className="flex items-center gap-8">
-          <li>
-            <NavLink to="/" className={navLinkClass}>
-              Início
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/conversor" className={navLinkClass}>
-              Conversor
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Wiki" className={navLinkClass}>
-              Wiki
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/noticias" className={navLinkClass}>
-              Notícias
-            </NavLink>
-          </li>
+          {NavItems.map((item) => (
+            <li key={item.to}>
+              <NavLink
+                to={item.to}
+                className={navLinkClass}
+                onClick={handleClickMenu}
+              >
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
 
@@ -97,66 +104,12 @@ const Header = () => {
       </button>
 
       {open && (
-        <div
-          id="menu"
-          className="fixed inset-0 top-[69px] w-screen h-[calc(100vh-69px)] bg-gray-950/95 backdrop-blur-lg z-40 flex flex-col select-none animate-fadeIn"
-          onClick={handleMenu}
-        >
-          <nav className="w-full flex flex-col">
-            <NavLink to="/" className={mobileNavLinkClass}>
-              Início
-            </NavLink>
-            <NavLink to="/conversor" className={mobileNavLinkClass}>
-              Conversor
-            </NavLink>
-            <NavLink to="/Wiki" className={mobileNavLinkClass}>
-              Wiki
-            </NavLink>
-            <NavLink to="/noticias" className={mobileNavLinkClass}>
-              Notícias
-            </NavLink>
-          </nav>
-
-          <div className="mt-auto mb-10 flex flex-col items-center gap-4 px-6 w-full">
-            <span className="text-xs font-semibold tracking-wider text-gray-600 uppercase">
-              Me siga para mais
-            </span>
-
-            <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm justify-center">
-              <a
-                href="https://github.com/Dannick10"
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  type="button"
-                  className="w-full text-gray-300 bg-gray-900 hover:bg-gray-850 hover:text-white border border-gray-800 font-medium rounded-xl text-xs px-4 py-3 flex items-center justify-center gap-2 transition-all duration-200 active:scale-95"
-                >
-                  <i className="fa-brands fa-github-alt text-sm text-lime-400" />
-                  Github
-                </button>
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/futurodevdaniel/"
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  type="button"
-                  className="w-full text-gray-300 bg-gray-900 hover:bg-gray-850 hover:text-white border border-gray-800 font-medium rounded-xl text-xs px-4 py-3 flex items-center justify-center gap-2 transition-all duration-200 active:scale-95"
-                >
-                  <i className="fa-brands fa-linkedin text-sm text-lime-400" />
-                  LinkedIn
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
+        <MenuMobile
+          NavItems={NavItems}
+          handleClickMenu={handleClickMenu}
+          handleMenu={handleMenu}
+          mobileNavLinkClass={mobileNavLinkClass}
+        />
       )}
     </header>
   );
